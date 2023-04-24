@@ -1,6 +1,4 @@
-# 📝 [Smart AI Blog](https://smart-blog.herokuapp.com/) CMS with _search_ and _automated tagging_ using TF-IDF NLP Algorithm
-
-+ Live [link](https://smart-blog.herokuapp.com/).
+# 📝 Tf-IDF Blog CMS with _search_ and _automated tagging_ 
 
 ```diff
 + Sample CMS built with MEN Stack
