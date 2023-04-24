@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    <link href="tailwind.css" rel="stylesheet">
+
+    <title>📢 Say something!</title>
+</head>
+
+<style>
+    @media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
+        .container {
+            max-width: 80% !important;
+        }
+        .app-name {
+            font-size: 300%;
+        }
+    }
+    
+    @media only screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (min-device-width: 768px) {
+        .container {
+            max-width: 50%;
+        }
+        .app-name {
+            font-size: 400%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container mb-5">
+        <form action="/articles/search" method="POST" class="mt-lg-5 mb-lg-5" style="max-width: 70% !important;
+        margin-left: auto;margin-right: auto;">
+            <input placeholder="Search for a specific article" type="text" name="query" id="query" class="form-control form-control-lg">
+        </form>
+        <!-- 
+        <h1 class="mt-lg-5 mb-lg-2" style="color: white;">placeholder</h1> -->
+
+        <h1 class="mb-4 mt-3" style="text-align: center; 
+        background: -webkit-linear-gradient(#eb3349 , #FF6384);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;">
+            <!-- 📢  -->
+            <span class="app-name" style="text-align: center; 
+        background: -webkit-linear-gradient(#ff512f,   #FF6384);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        ">Say something!</span></h1>
+        <!-- 
+        <a href="/articles/add-article" class="btn btn-success" style="">New Article</a> -->
+        <a href="/articles/add-article" class="hover:border-transparent hover:text-red-400 hover:shadow-lg w-full flex items-center justify-center rounded border-2 border-dashed border-gray-200 text-lg font-medium py-10">
+            New Article
+          </a>
+
+        <% articles.forEach(function(article) { %>
+            <a href="/articles/<%= article.slug %>" style="color: black; text-decoration: none;">
+                <div class="hover:shadow-lg bg-white rounded-lg">
+                    <div class="card mt-3 mb-1" style="">
+                        <div class="card-body">
+                            <a href="/articles/<%= article.slug %>" style="color: black; text-decoration: none;">
+                                <h4 class="card-title" style="font-size: 160%;font-weight: lighter;">
+                                    <%= article.title %>
+                                </h4>
+                                <div class="card-subtitle text-muted mb-2">
+                                    <%= article.createdAt %>
+                                </div>
+                                <div class="card-text mb-2">
+                                    <%= article.description %>
+                                </div>
+                        </div>
+                        <div class="px-6 pb-2">
+                            <% for(var i=0; i < article.tags.length ; i++) { %>
+                                <a href="/categories/<%= article.tags[i] %>" class="inline-block bg-gray-200 hover:bg-red-500 hover:text-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" role="button">
+
+                                    #<%= article.tags[i] %>
+
+                                </a>
+                                <% } %>
+
+                        </div>
+                    </div>
+                </div>
+                </a>
+                <% } ) %>
+
+
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

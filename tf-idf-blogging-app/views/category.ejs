@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel='stylesheet' type='text/css' href='/tailwind.css' />
+    <link href="/styles.css" rel="stylesheet" type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>💡 Looking for something specific?</title>
+</head>
+
+<style>
+    @media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
+        .container {
+            max-width: 80% !important;
+        }
+    }
+    
+    @media only screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (min-device-width: 768px) {
+        .container {
+            max-width: 50%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container mb-5">
+        <form action="/articles/search" method="POST" class="mt-lg-5 mb-lg-5" style="max-width: 70% !important;margin-left: auto;margin-right: auto;">
+            <input placeholder="Search for a specific article" type="text" name="query" id="query" class="form-control form-control-lg">
+        </form>
+        <h1 class="mb-4 mt-3" style="text-align: center;">
+            🔍 All Articles /
+            <%= category.replace(/\w/, c => c.toUpperCase())  %>
+        </h1>
+        <!-- <a href="/articles/add-article" class="btn btn-success">New Article</a> -->
+
+        <a href="/" class="btn btn-dark mb-3">Go back home</a>
+        <a href="/articles/add-article" style="text-decoration: none;" class="hover:border-transparent hover:text-blue-700 hover:shadow-lg w-full flex items-center justify-center rounded border-2 border-dashed border-gray-200 text-lg font-medium py-10">
+            New Article
+          </a>
+        <% articles.forEach(function(article) { %>
+            <a href="/articles/<%= article.slug %>" style="color: black; text-decoration: none;">
+
+                <div class="hover:shadow-lg bg-white rounded-lg">
+                    <div class="card mt-3 mb-1" style="">
+                        <div class="card-body">
+                            <a href="/articles/<%= article.slug %>" style="color: black; text-decoration: none;">
+                                <h4 class="card-title" style="font-size: 160%;">
+                                    <%= article.title %>
+                                </h4>
+                                <div class="card-subtitle text-muted mb-2">
+                                    <%= article.createdAt %>
+                                </div>
+                                <div class="card-text mb-2">
+                                    <%= article.description %>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="px-6 pb-2">
+                            <% for(var i=0; i < article.tags.length ; i++) { %>
+                                <a href="/categories/<%= article.tags[i] %>" style="text-decoration: none;" class="inline-block bg-gray-200 hover:bg-blue-800 hover:text-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" role="button">
+
+                                    #<%= article.tags[i] %>
+
+                                </a>
+                                <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <% } ) %>
+
+
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

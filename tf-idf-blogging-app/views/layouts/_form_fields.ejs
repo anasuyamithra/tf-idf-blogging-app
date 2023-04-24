@@ -1,0 +1,27 @@
+<div class="form-group">
+    <!-- <h1 class="mb-4">Say Something!</h1> -->
+    <h1 class="mb-4" style="text-align: center; 
+        background: -webkit-linear-gradient(#eb3349 , #FF6384);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;">
+        <!-- 📢  -->
+        <span class="" style="text-align: center; 
+        background: -webkit-linear-gradient(#ff512f,   #FF6384);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 100%;">Say something!</span></h1>
+    <h3 class="mb-2 mt-2">Title</h3>
+    <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">
+
+    <h3 class="mb-2 mt-2">Description</h3>
+    <textarea required name="description" id="description" class="form-control"><%= article.description %></textarea>
+
+    <h3 class="mb-2 mt-2">Body (In Markdown)</h3>
+    <textarea required name="body" id="body" class="form-control" style="height: 139px;"><%= article.body %></textarea>
+
+    <a href="/" class="btn btn-secondary">Cancel</a>
+
+    <a href="/">
+        <button type="submit" class="btn btn-primary">Post Article</button>
+    </a>
+</div>

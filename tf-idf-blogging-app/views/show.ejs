@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel='stylesheet' type='text/css' href='/tailwind.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <link href="/article_styles.css" rel="stylesheet" type='text/css'>
+
+
+
+    <title> 📝
+        <%= article.title %>
+    </title>
+</head>
+
+<style>
+    @media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
+        .container {
+            max-width: 90% !important;
+        }
+    }
+    
+    @media only screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (min-device-width: 768px) {
+        .container {
+            max-width: 70%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+
+
+
+        <h1 class="mt-5 mb-1" style="font-weight: lighter;">
+            <%= article.title %>
+        </h1>
+
+        <% for(var i=0; i < article.tags.length ; i++) { %>
+            <a href="/categories/<%= article.tags[i] %>" style="text-decoration: none;" class="inline-block bg-gray-200 hover:bg-black hover:text-white rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-1 mb-2" role="button">
+
+                #<%= article.tags[i] %>
+
+            </a>
+            <% } %>
+
+                <div class="text-muted mb-2">
+                    <%= article.createdAt.toLocaleDateString() %>
+                </div>
+
+                <a href="/" class="btn btn-dark">All Articles</a>
+                <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                <form action="/articles/<%= article.id %>?_method=DELETE" class="d-inline" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+                <div class="mb-3 mt-4">
+                    <%- article.sanitisedHTML %>
+                </div>
+
+                <div class="p-4 mt-4 mb-4 shadow-sm" style="">
+
+                    <div class="inline-block text-lg text-gray-700 mb-4">
+                        <h1>Featured</h1>
+                    </div>
+                    <ul class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                        <% for(var i=0; i < article_suggest.length ; i++) { %>
+                            <li>
+                                <a href="/articles/<%= article_suggest[i].slug %>" style="color: black; text-decoration: none;" class="hover:bg-gray-700 hover:text-white hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
+                                    <dl class="grid sm:block lg:grid xl:block grid-cols-3 grid-rows-2 items-center">
+                                        <div>
+                                            <dt class="sr-only">Title</dt>
+                                            <dd class="leading-6 font-medium text-black group-hover:text-white">
+                                                <%= article_suggest[i].title %>
+                                            </dd>
+                                        </div>
+                                        <div>
+                                            <dt class="sr-only">Description</dt>
+                                            <dd class="group-hover:text-gray-200 text-sm font-medium sm:mb-4 lg:mb-0 xl:mb-4">
+                                                <%= article_suggest[i].description %>
+                                            </dd>
+                                        </div>
+
+                                    </dl>
+                                </a>
+                            </li>
+                            <% } %>
+                    </ul>
+                </div>
+    </div>
+
+</body>
+
+</html>
