@@ -5,13 +5,13 @@
 + Automated Tagging added (stopwords for markdown not added)
 + Search functionality added (using document similarity implemented with cosine similarity)
 ```
-This project seeks to create a content management system (CMS) for a online publishing platform with features to enhance user retention, overall user friendliness and help admin users to perform CRUD operations on their respective articles.
+Our new online publishing platform features a Content Management System (CMS) that is designed to enhance user engagement and overall user experience. With a focus on user retention, we have developed an intuitive platform that streamlines the article publishing process and enables admins to perform CRUD operations on their respective articles with ease.
 
-The project seeks to automate the process of placing the articles under topics/tags without the need for users to add it in themselves, helping the users focus solely on the content they upload, rather than how viewers find their articles.
+Our NLP Text Pre-Processing Algorithm, TF-IDF, has been integrated into our platform to automate the process of categorizing articles under relevant topics/tags. This means that users can focus solely on creating their content, while our platform takes care of ensuring that the content is tagged accurately and appropriately.
 
-It uses the NLP Text Pre-Processing Alogrithm, TF-IDF, to automate this task and properly annotate each article with tags generated on how important a specific feature is to the article.
+Our search function has been designed with user convenience in mind. Our system uses cosine similarity to provide the top 4 articles that are most relevant to a user's search query. This feature allows users to search for articles using natural language, without having to worry about the specific keywords or tags associated with the article.
 
-When a query is passed into the search bar, we use _cosine similarity_ to find the most similar document(article) which corresponds to the query. Thus the query can be typed in natural language, and the web application will provide the top 4 similar articles to the query made.
+Overall, our online publishing platform provides an intuitive and streamlined experience for both users and admins, allowing for easy content creation, management, and discovery.
 
 
 ### 🔧 Working with the following technologies:
